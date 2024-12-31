@@ -8,6 +8,5 @@ namespace MultiShop.Catalog.Dtos.ProductImageDtos
         public string Image2 { get; set; }
         public string Image3 { get; set; }
         public string ProductId { get; set; }
-        public Product Product { get; set; }
     }
 }
