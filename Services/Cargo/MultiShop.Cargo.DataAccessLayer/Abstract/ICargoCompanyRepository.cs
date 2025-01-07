@@ -4,8 +4,8 @@ namespace MultiShop.Cargo.DataAccessLayer.Abstract
 {
     public interface ICargoCompanyRepository:IRepositoryBase<CargoCompany>
     {
-        Task<List<CargoCompany>> GetAllAsync(bool trackChanges);
-        Task<CargoCompany> GetByIdAsync(int id,bool trackChanges);
+        Task<List<CargoCompany>> GetAllCargoCompaniesAsync(bool trackChanges);
+        Task<CargoCompany> GetCargoCompanyByIdAsync(int id,bool trackChanges);
         void CreateOneCargoCompany(CargoCompany cargoCompany);
         void UpdateOneCargoCompany(CargoCompany cargoCompany);
         void DeleteOneCargoCompany(CargoCompany cargoCompany);

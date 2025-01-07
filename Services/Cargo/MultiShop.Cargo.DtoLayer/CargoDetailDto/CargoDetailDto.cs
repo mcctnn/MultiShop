@@ -4,7 +4,8 @@
     {
         public int CargoDetailId { get; init; }
         public int SenderCustomer { get; init; }
-        public string? ReceiverCustomer { get; init; }
+        public string ReceiverCustomer { get; init; }
         public int Barcode { get; init; }
+        public int CargoCompanyId { get; init; }
     }
 }

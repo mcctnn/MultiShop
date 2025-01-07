@@ -5,9 +5,17 @@ namespace MultiShop.Cargo.DataAccessLayer.Concrete
 {
     public class CargoContext:DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public CargoContext(DbContextOptions<CargoContext> options) : base(options)
         {
-            optionsBuilder.UseSqlServer("Server=localhost,1435;initial Catalog=MultiShopCargoDb;TrustServerCertificate=True;User=sa;Password=123456aA*");
+            
+        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer("Server=localhost,1435;initial Catalog=MultiShopCargoDb;TrustServerCertificate=True;User=sa;Password=123456aA*");
+        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
         }
         public DbSet<CargoCustomer> CargoCustomers { get; set; }
         public DbSet<CargoCompany> CargoCompanies { get; set; }

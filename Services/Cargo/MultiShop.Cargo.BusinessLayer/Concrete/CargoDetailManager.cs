@@ -34,7 +34,7 @@ namespace MultiShop.Cargo.BusinessLayer.Concrete
 
         private async Task<CargoDetail> GetOneDetailByIdAndCheckExistence(int id, bool trackChanges)
         {
-            var cargoDetail = await _manager.CargoDetailRepo.GetByIdAsync(id, trackChanges);
+            var cargoDetail = await _manager.CargoDetailRepo.GetCargoDetailByIdAsync(id, trackChanges);
 
             if (cargoDetail is null)
             {
@@ -43,9 +43,9 @@ namespace MultiShop.Cargo.BusinessLayer.Concrete
             return cargoDetail;
         }
 
-        public async Task<IEnumerable<CargoDetail>> GetCargoCompaniesAsync(bool trackChanges)
+        public async Task<IEnumerable<CargoDetail>> GetAllCargoDetailsAsync(bool trackChanges)
         {
-            var companies = await _manager.CargoDetailRepo.GetAllAsync(trackChanges);
+            var companies = await _manager.CargoDetailRepo.GetAllCargoDetailsAsync(trackChanges);
 
             return companies;
         }
@@ -62,8 +62,8 @@ namespace MultiShop.Cargo.BusinessLayer.Concrete
         {
             var cargoDetail = await GetOneDetailByIdAndCheckExistence(id, trackChanges);
 
-            _mapper.Map<CargoDetail>(cargoDetailDtoForUpdate);
-            _manager.CargoDetailRepo.UpdateOneCargoDetail(cargoDetail);
+            var entity=_mapper.Map<CargoDetail>(cargoDetailDtoForUpdate);
+            _manager.CargoDetailRepo.UpdateOneCargoDetail(entity);
             await _manager.SaveAsync();
         }
     }

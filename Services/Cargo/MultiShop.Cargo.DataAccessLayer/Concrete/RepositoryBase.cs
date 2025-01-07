@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace MultiShop.Cargo.DataAccessLayer.Concrete
 {
-    public class RepositoryBase<T> : IRepositoryBase<T> where T : class
+    public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
         private readonly CargoContext _context;
 

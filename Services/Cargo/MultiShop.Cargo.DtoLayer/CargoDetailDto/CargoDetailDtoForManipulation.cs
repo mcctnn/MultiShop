@@ -7,8 +7,11 @@ namespace MultiShop.Cargo.DtoLayer.CargoDetailDto
         [Required]
         public int SenderCustomer { get; init; }
         [Required]
-        public string? ReceiverCustomer { get; init; }
+        public string ReceiverCustomer { get; init; }
         [Required]
         public int Barcode { get; init; }
+        [Required]
+        public int CargoCompanyId { get; init; }
+
     }
 }

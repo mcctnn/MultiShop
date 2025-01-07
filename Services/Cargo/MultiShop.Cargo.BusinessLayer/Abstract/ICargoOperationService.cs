@@ -5,7 +5,7 @@ namespace MultiShop.Cargo.BusinessLayer.Abstract
 {
     public interface ICargoOperationService
     {
-        Task<IEnumerable<CargoOperation>> GetCargoCompaniesAsync(bool trackChanges);
+        Task<IEnumerable<CargoOperation>> GetCargoOperationsAsync(bool trackChanges);
         Task<CargoOperationDto> GetCargoOperationByIdAsync(int id, bool trackChanges);
         Task<CargoOperationDto> CreateOneOperationAsync(CargoOperationDtoForInsertion cargoOperationDtoForInsertion);
         Task UpdateOneOperationAsync(int id, CargoOperationDtoForUpdate cargoOperationDtoForUpdate, bool trackChanges);

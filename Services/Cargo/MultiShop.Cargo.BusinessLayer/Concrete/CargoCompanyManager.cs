@@ -36,7 +36,7 @@ namespace MultiShop.Cargo.BusinessLayer.Concrete
 
         public async Task<IEnumerable<CargoCompany>> GetCargoCompaniesAsync(bool trackChanges)
         {
-            var companies = await _manager.CargoCompanyRepo.GetAllAsync(trackChanges);
+            var companies = await _manager.CargoCompanyRepo.GetAllCargoCompaniesAsync(trackChanges);
             return companies;
         }
 
@@ -60,7 +60,7 @@ namespace MultiShop.Cargo.BusinessLayer.Concrete
 
         private async Task<CargoCompany> GetOneCompanyByIdAndCheckExistence(int id, bool trackChanges)
         {
-            var cargoCompany = await _manager.CargoCompanyRepo.GetByIdAsync(id, trackChanges);
+            var cargoCompany = await _manager.CargoCompanyRepo.GetCargoCompanyByIdAsync(id, trackChanges);
             if (cargoCompany is null)
             {
                 throw new Exception("Cargo company not found");

@@ -14,12 +14,12 @@ namespace MultiShop.Cargo.DataAccessLayer.Concrete
 
         public void DeleteOneCargoCustomer(CargoCustomer cargoCustomer) => Delete(cargoCustomer);
 
-        public async Task<List<CargoCustomer>> GetAllAsync(bool trackChanges)
+        public async Task<List<CargoCustomer>> GetAllCargoCustomersAsync(bool trackChanges)
         {
             return await FindAll(trackChanges).OrderBy(b => b.CargoCustomerId).ToListAsync();
         }
 
-        public async Task<CargoCustomer> GetByIdAsync(int id, bool trackChanges)=> await FindByCondition(b => b.Equals(id), trackChanges).SingleOrDefaultAsync();
+        public async Task<CargoCustomer> GetCargoCustomerByIdAsync(int id, bool trackChanges)=> await FindByCondition(b => b.CargoCustomerId.Equals(id), trackChanges).SingleOrDefaultAsync();
 
         public void UpdateOneCargoCustomer(CargoCustomer cargoCustomer) => Update(cargoCustomer);
     }

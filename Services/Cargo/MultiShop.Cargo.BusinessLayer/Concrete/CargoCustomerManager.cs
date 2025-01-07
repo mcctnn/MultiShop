@@ -36,7 +36,7 @@ namespace MultiShop.Cargo.BusinessLayer.Concrete
 
         private async Task<CargoCustomer> GetOneCustomerByIdAndCheckExistence(int id, bool trackChanges)
         {
-            var cargoCustomer = await _manager.CargoCustomerRepo.GetByIdAsync(id, trackChanges);
+            var cargoCustomer = await _manager.CargoCustomerRepo.GetCargoCustomerByIdAsync(id, trackChanges);
             if (cargoCustomer is null)
             {
                 throw new Exception($"Cargo customer with the id:{id} not found");
@@ -44,9 +44,9 @@ namespace MultiShop.Cargo.BusinessLayer.Concrete
             return cargoCustomer;
         }
 
-        public async Task<IEnumerable<CargoCustomer>> GetCargoCompaniesAsync(bool trackChanges)
+        public async Task<IEnumerable<CargoCustomer>> GetCargoCustomersAsync(bool trackChanges)
         {
-            var companies = await _manager.CargoCustomerRepo.GetAllAsync(trackChanges);
+            var companies = await _manager.CargoCustomerRepo.GetAllCargoCustomersAsync(trackChanges);
             return companies;
         }
 

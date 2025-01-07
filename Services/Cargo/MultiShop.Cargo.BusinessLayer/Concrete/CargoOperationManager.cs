@@ -34,7 +34,7 @@ namespace MultiShop.Cargo.BusinessLayer.Concrete
 
         private async Task<CargoOperation> GetOneOperationByIdAndCheckExistence(int id, bool trackChanges)
         {
-            var cargoOperation = await _manager.CargoOperationRepo.GetByIdAsync(id, trackChanges);
+            var cargoOperation = await _manager.CargoOperationRepo.GetCargoOperationByIdAsync(id, trackChanges);
 
             if (cargoOperation is null)
             {
@@ -43,15 +43,16 @@ namespace MultiShop.Cargo.BusinessLayer.Concrete
             return cargoOperation;
         }
 
-        public async Task<IEnumerable<CargoOperation>> GetCargoCompaniesAsync(bool trackChanges)
+        public async Task<IEnumerable<CargoOperation>> GetCargoOperationsAsync(bool trackChanges)
         {
-            var operations =await _manager.CargoOperationRepo.GetAllAsync(trackChanges);
+            var operations =await _manager.CargoOperationRepo.GetAllCargoOperationsAsync(trackChanges);
             return operations;
         }
 
         public async Task<CargoOperationDto> GetCargoOperationByIdAsync(int id, bool trackChanges)
         {
             var cargoOperation = await GetOneOperationByIdAndCheckExistence(id, trackChanges);
+            
             return _mapper.Map<CargoOperationDto>(cargoOperation);
         }
 

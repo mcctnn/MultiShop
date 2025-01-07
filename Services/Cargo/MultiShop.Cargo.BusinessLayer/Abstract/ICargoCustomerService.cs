@@ -5,7 +5,7 @@ namespace MultiShop.Cargo.BusinessLayer.Abstract
 {
     public interface ICargoCustomerService
     {
-        Task<IEnumerable<CargoCustomer>> GetCargoCompaniesAsync(bool trackChanges);
+        Task<IEnumerable<CargoCustomer>> GetCargoCustomersAsync(bool trackChanges);
         Task<CargoCustomerDto> GetCargoCustomerByIdAsync(int id, bool trackChanges);
         Task<CargoCustomerDto> CreateOneCustomerAsync(CargoCustomerDtoForInsertion cargoCustomerDtoForInsertion);
         Task UpdateOneCustomerAsync(int id, CargoCustomerDtoForUpdate cargoCustomerDtoForUpdate, bool trackChanges);
