@@ -67,9 +67,45 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> RemoveCategory(string id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync("https://localhost:7032/api/Categories/"+id );
+            var responseMessage = await client.DeleteAsync("https://localhost:7032/api/Categories?categoryId=" + id );
             if (responseMessage.IsSuccessStatusCode) {
                 return RedirectToAction("Index", "Category", new { area = "Admin" });
+            }
+            return View();
+        }
+
+        [Route("UpdateCategory/{id}")]
+        [HttpGet]
+        public async Task<IActionResult> UpdateCategory(string id)
+        {
+            ViewBag.v0 = "Kategori İşlemleri";
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Kategoriler";
+            ViewBag.v3 = "Kategori Güncelleme";
+            var client= _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:7032/api/Categories/" + id);
+            if (responseMessage.IsSuccessStatusCode) 
+            { 
+                var jsonData=await responseMessage.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<UpdateCategoryDto>(jsonData);
+                return View(result);
+            }
+            return View();
+        }
+
+        [Route("UpdateCategory/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> UpdateCategory(UpdateCategoryDto dto)
+        {
+            
+            var client = _httpClientFactory.CreateClient();
+            var jsonData=JsonConvert.SerializeObject(dto);
+            StringContent content = new StringContent(jsonData,Encoding.UTF8,"application/json");
+            var responseMessage = await client.PutAsync("https://localhost:7032/api/Categories/" ,content);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "Category", new { area = "Admin" });
+
             }
             return View();
         }

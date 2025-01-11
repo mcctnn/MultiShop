@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Catalog.Dtos.ProductDtos
+﻿namespace MultiShop.DtoLayer.DataTransferObjects.CatalogDtos.ProductDtos
 {
     public record CreateProductDto
     {
@@ -6,6 +6,6 @@
         public decimal ProductPrice { get; init; }
         public string ProductImageUrl { get; init; }
         public string ProductDescription { get; init; }
-        public string CategoryId { get; init; }        
+        public string CategoryId { get; init; }
     }
 }

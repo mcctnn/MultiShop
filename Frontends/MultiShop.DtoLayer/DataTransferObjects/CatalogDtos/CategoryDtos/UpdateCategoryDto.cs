@@ -1,6 +1,6 @@
-﻿namespace MultiShop.Catalog.Dtos.CategoryDtos
+﻿namespace MultiShop.DtoLayer.DataTransferObjects.CatalogDtos.CategoryDtos
 {
-    public record ResultCategoryDto
+    public record UpdateCategoryDto
     {
         public string CategoryId { get; init; }
         public string CategoryName { get; init; }

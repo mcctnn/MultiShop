@@ -1,8 +1,8 @@
 ﻿namespace MultiShop.Catalog.Dtos.CategoryDtos
 {
-    public class UpdateCategoryDto
+    public record UpdateCategoryDto
     {
-        public string CategoryId { get; set; }
-        public string CategoryName { get; set; }
+        public string CategoryId { get; init; }
+        public string CategoryName { get; init; }
     }
 }
