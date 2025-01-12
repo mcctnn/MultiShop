@@ -30,7 +30,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v3 = "Ürün Listesi";
 
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7032/api/Products/GetAllProductsWithCategoryAsync");
+            var responseMessage = await client.GetAsync("https://localhost:7032/api/Products/GetAllProductsWithCategory");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();

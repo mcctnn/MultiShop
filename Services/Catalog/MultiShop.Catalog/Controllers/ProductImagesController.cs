@@ -17,35 +17,35 @@ namespace MultiShop.Catalog.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllCategoriesAsync()
+        public async Task<IActionResult> GetAllProductImages()
         {
             var result = await _productImageService.GetAllProductImagesAsync();
             return Ok(result);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetByIdProductImageAsync(string id)
+        public async Task<IActionResult> GetByIdProductImage(string id)
         {
             var result = await _productImageService.GetByIdProductImageAsync(id);
             return Ok(result);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateProductImageAsync(CreateProductImageDto createProductImageDto)
+        public async Task<IActionResult> CreateProductImage(CreateProductImageDto createProductImageDto)
         {
             await _productImageService.CreateProductImageAsync(createProductImageDto);
             return Ok("Ürün resmi eklendi");
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteProductImageAsync(string ProductImageId)
+        public async Task<IActionResult> DeleteProductImage(string ProductImageId)
         {
             await _productImageService.DeleteProductImageAsync(ProductImageId);
             return Ok("Ürün resmi silindi");
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateProductImageAsync(UpdateProductImageDto updateProductImageDto)
+        public async Task<IActionResult> UpdateProductImage(UpdateProductImageDto updateProductImageDto)
         {
             await _productImageService.UpdateProductImageAsync(updateProductImageDto);
             return Ok("Ürün resmi güncellendi");
