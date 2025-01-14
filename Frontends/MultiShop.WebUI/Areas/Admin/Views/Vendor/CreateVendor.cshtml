@@ -1,0 +1,26 @@
+﻿@model CreateVendorDto
+@{
+    ViewData["Title"] = "CreateVendor";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+
+                <div class="bs-example" data-example-id="bordered-table">
+                    <form method="post">
+                        <label>Satıcı marka Adı</label>
+                        <input type="text" class="form-control" asp-for="VendorName" />
+                        <br />
+                        <label>Satıcı marka Görseli</label>
+                        <input type="text" class="form-control" asp-for="ImageUrl" />
+                        <br />
+                        <button class="btn btn-primary">Satıcı markayı ekle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
