@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
+using MultiShop.Catalog.Services.AboutServices;
 using MultiShop.Catalog.Services.CategoryServices;
 using MultiShop.Catalog.Services.FeatureServices;
 using MultiShop.Catalog.Services.FeatureSliderServices;
@@ -7,6 +8,7 @@ using MultiShop.Catalog.Services.OfferDiscountServices;
 using MultiShop.Catalog.Services.ProductDetailServices;
 using MultiShop.Catalog.Services.ProductImageServices;
 using MultiShop.Catalog.Services.ProductServices;
+using MultiShop.Catalog.Services.SocialMediaServices;
 using MultiShop.Catalog.Services.SpecialOfferServices;
 using MultiShop.Catalog.Services.VendorServices;
 using MultiShop.Catalog.Settings;
@@ -29,6 +31,8 @@ builder.Services.AddScoped<ISpecialOfferService, SpecialOfferManager>();
 builder.Services.AddScoped<IFeatureService, FeatureManager>();
 builder.Services.AddScoped<IOfferDiscountService,OfferDiscountManager>();
 builder.Services.AddScoped<IVendorService, VendorManager>();
+builder.Services.AddScoped<IAboutService, AboutManager>();
+builder.Services.AddScoped<ISocialMediaService, SocialMediaManager>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

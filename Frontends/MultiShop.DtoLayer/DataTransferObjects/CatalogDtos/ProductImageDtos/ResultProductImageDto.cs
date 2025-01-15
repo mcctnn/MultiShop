@@ -1,0 +1,12 @@
+﻿namespace MultiShop.DtoLayer.DataTransferObjects.CatalogDtos.ProductImageDtos
+{
+    public record ResultProductImageDto
+    {
+        public string ProductImagesId { get; init; }
+        public string Image1 { get; init; }
+        public string Image2 { get; init; }
+        public string Image3 { get; init; }
+        public string Image4 { get; init; }
+        public string ProductId { get; init; }
+    }
+}

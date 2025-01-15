@@ -1,0 +1,47 @@
+﻿@model List<ResultSocialMediaDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Sosyal medya Listesi</h4>
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Sosyal medya adı </th>
+                                <th>Link</th>
+                                <th>İkon</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <th scope="row">@count</th>
+                                    <td>@item.SocialMediaName</td>
+                                    <td>@item.Link</td>
+                                    <td>@item.Icon</td>
+                                    <td><a href="/Admin/SocialMedia/RemoveSocialMedia/@item.SocialMediaId" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Admin/SocialMedia/UpdateSocialMedia/@item.SocialMediaId" class="btn btn-success">Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a href="/Admin/SocialMedia/CreateSocialMedia/" class="btn btn-primary">Yeni sosyal medya girişi</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

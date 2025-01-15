@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MultiShop.Catalog.Dtos.AboutDtos;
 using MultiShop.Catalog.Dtos.CategoryDtos;
 using MultiShop.Catalog.Dtos.FeatureDtos;
 using MultiShop.Catalog.Dtos.FeatureSliderDtos;
@@ -6,6 +7,7 @@ using MultiShop.Catalog.Dtos.OfferDiscountDtos;
 using MultiShop.Catalog.Dtos.ProductDetailDtos;
 using MultiShop.Catalog.Dtos.ProductDtos;
 using MultiShop.Catalog.Dtos.ProductImageDtos;
+using MultiShop.Catalog.Dtos.SocialMediaDtos;
 using MultiShop.Catalog.Dtos.SpecialOfferDtos;
 using MultiShop.Catalog.Dtos.VendorDtos;
 using MultiShop.Catalog.Entities;
@@ -27,6 +29,7 @@ namespace MultiShop.Catalog.Mapping
             CreateMap<Product, UpdateProductDto>().ReverseMap();
             CreateMap<Product, GetByIdProductDto>().ReverseMap();
             CreateMap<Product,ResultProductWithCategoryDto>().ReverseMap();
+            CreateMap<ResultProductDto, ResultProductWithCategoryDto>().ReverseMap();
             //for product detail
             CreateMap<ProductDetail, ResultProductDetailDto>().ReverseMap();
             CreateMap<ProductDetail, CreateProductDetailDto>().ReverseMap();
@@ -62,6 +65,16 @@ namespace MultiShop.Catalog.Mapping
             CreateMap<Vendor, CreateVendorDto>().ReverseMap();
             CreateMap<Vendor, GetVendorByIdDto>().ReverseMap();
             CreateMap<Vendor, UpdateVendorDto>().ReverseMap();
+            //for about us
+            CreateMap<About,ResultAboutDto>().ReverseMap();
+            CreateMap<About, CreateAboutDto>().ReverseMap();
+            CreateMap<About, GetAboutByIdDto>().ReverseMap();
+            CreateMap<About, UpdateAboutDto>().ReverseMap();
+            //for social media
+            CreateMap<SocialMedia,ResultSocialMediaDto>().ReverseMap();
+            CreateMap<SocialMedia, CreateSocialMediaDto>().ReverseMap();
+            CreateMap<SocialMedia, GetSocialMediaByIdDto>().ReverseMap();
+            CreateMap<SocialMedia, UpdateSocialMediaDto>().ReverseMap();
         }
     }
 }

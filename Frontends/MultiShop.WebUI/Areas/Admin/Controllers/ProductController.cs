@@ -1,5 +1,4 @@
-﻿using Humanizer;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MultiShop.DtoLayer.DataTransferObjects.CatalogDtos.CategoryDtos;
@@ -30,6 +29,24 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             ViewBag.v3 = "Ürün Listesi";
 
             var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:7032/api/Products");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
+        [Route("ProductListWithCategory")]
+        public async Task<IActionResult> ProductListWithCategory()
+        {
+            ViewBag.v0 = "Ürün İşlemleri";
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Ürünler";
+            ViewBag.v3 = "Ürün Listesi";
+            var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7032/api/Products/GetAllProductsWithCategory");
             if (responseMessage.IsSuccessStatusCode)
             {
@@ -38,7 +55,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                 return View(values);
             }
             return View();
-        }       
+        }
 
         [Route("CreateProduct")]
         [HttpGet]
